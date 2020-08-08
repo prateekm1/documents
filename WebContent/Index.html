@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="ISO-8859-1">
+<title>Airline Management System</title>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  display: none;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.container {
+  margin: 50px auto;
+  width: 640px;
+}
+ 
+.login {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+}
+
+
+
+.login p.submit {
+  text-align: right;
+}
+ 
+.login-help {
+  margin: 20px 0;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px #2a85a1;
+}
+ 
+.login-help a {
+  color: #cce7fa;
+  text-decoration: none;
+}
+ 
+.login-help a:hover {
+  text-decoration: underline;
+}
+ 
+:-moz-placeholder {
+  color: #c9c9c9 !important;
+  font-size: 13px;
+}
+ 
+::-webkit-input-placeholder {
+  color: #ccc;
+  font-size: 13px;
+}
+
+
+.container {
+  margin: 50px auto;
+  width: 640px;
+}
+.login:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+ 
+.login h1 {
+  margin: -20px -20px 21px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  text-shadow: 0 1px white;
+  background: #f3f3f3;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+  background-image: -webkit-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -moz-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -o-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: linear-gradient(to bottom, whiteffd, #eef2f5);
+  -webkit-box-shadow: 0 1px whitesmoke;
+  box-shadow: 0 1px whitesmoke;
+}
+ 
+.login p {
+  margin: 20px 0 0;
+}
+ 
+.login p:first-child {
+  margin-top: 0;
+}
+ 
+.login input[type=text], .login input[type=password] {
+  width: 278px;
+}
+ 
+.login p.remember_me {
+  float: left;
+  line-height: 31px;
+}
+ 
+.login p.remember_me label {
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+}
+ 
+.login p.remember_me input {
+  position: relative;
+  bottom: 1px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+.container .box { 
+                width:800px; 
+                height:500px;
+                margin:50px; 
+                display:table; 
+            } 
+            .container .box .box-row { 
+                display:table-row; 
+            } 
+            .container .box .box-cell { 
+                display:table-cell; 
+                width:50%; 
+                padding:10px; 
+            } 
+            .container .box .box-cell.box1 { 
+                background:#4d4d00; 
+                color:white; 
+                text-align:justify; 
+             } 
+            .container .box .box-cell.box2 { 
+                background:#666600; 
+                text-align:justify 
+            } 
+            
+            
+            
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+
+</head>
+<body>
+<h1 align="center">Welcome to</h1>
+ <h2 align="center">Airline Management System</h2>
+ <img src="LPwelcome12.jpg" width="1340" height="300" alt="LPwelcome12"/>
+ 
+ 
+<!-- login as user div -->
+<div id="logindiv" class="container">
+<div id="logindivFinal" class="container">
+<div class="container">
+  <div class="login">
+    <h1>Login </h1>
+    
+      <p><input type="text" name="username" id="username" value="" placeholder="Username"></p>
+      <p><input type="password" name="userpass" id="userpass" value="" placeholder="Password"></p>
+     
+      <p class="submit">
+      	<button onclick = "login2()">Login</button>
+      </p>
+    <p>
+    New User? <button onclick = "register()">Register</button></br>
+    </p>
+    <p>
+    <button onclick = "admin()">Login As Admin</button></br>
+    </p>
+  </div> 
+</div>
+</div>
+
+</div>
+<!-- Register as user div -->
+	<Div id = "registerUserDetails" class="container" >
+		<div class="login">
+			<h1>New User registration</h1>
+			
+				<p>User Name:<input type="text" name="newUserNameLogin" id="newUserNameLogin" placeholder="Username or Email"/></p>  
+				<p>Email:<input type="text" name="newUserEmail" id="newUserEmail" placeholder="Email Id"/></p>
+				<p>Address:<input type="text" name="newUserAddress" id="newUserAddress" placeholder="Postal Address"/></p>
+				<p>Password:<input type="password" name="newUserPassword" id="newUserPassword" placeholder="Password"/></p>
+				<p>Repeat Password:<input type="password" name="newUserPassword2" id="newUserPassword2" placeholder="Repeat password"/></p>
+				<p><button onclick = "registerUserDtls()">Submit</button></p>
+				
+				<p><button onclick = "newLogin()">Book Flight</button></p>
+			
+			</div>
+		</Div>
+
+<!-- login as admin div -->
+<div id="Adminlogindiv" class="container">
+<div class="container">
+  <div class="login">
+    <h1>Admin Login </h1>
+    
+      <p><input type="text" name="adminname" id="adminname" value="" placeholder="Username or Email"></p>
+      <p><input type="password" name="adminpass" id="adminpass" value="" placeholder="Password"></p>
+     
+      <p class="submit">
+      	<button onclick = "login()">Login</button>
+      </p>
+    
+  </div>
+ 
+  
+</div>
+</div>
+
+<!-- Create a flight booking div -->
+		<Div id = "createNewFlightDetails" class="container">
+			<div class="login">
+				<h1>New Flight Schedule</h1>
+				
+					<p>Flight Name:<input type="text" name="newFlightName" id="newFlightName" placeholder="Flight name"/></p>
+					<p>Flight Number:<input type="text" name="newFlightNumber" id="newFlightNumber" placeholder="Flight Number"/></p>
+					<p>From:<input type="text" name="newFromLocation" id="newFromLocation" placeholder="From Location"/></p>
+					<p>To:<input type="text" name="newToLocation" id="newToLocation" placeholder="To Location"/></p>
+					<p>Date:<input type="date" name="newScheduleDate" id="newScheduleDate" placeholder="Date"/></p>
+					<p>Time:<input type="time" name="flightTime" id="flightTime" placeholder="Time"/></p>
+					
+					
+					</br>
+					</br>
+					
+					<p><button onclick = "createNewFlightDetailsOnSystem()">Create</button></p>
+			</div>
+		</Div>
+		<!-- Book flight as user -->
+		<Div id = "bookFlightDetails" class="container" >
+		<div class="box"> 
+			<div class="box-row"> 
+				<div id ="temp1" class="box-cell box1" style = "margin-left: 20%;">
+					
+						<h1>Book Flight</h1>
+						<p>
+						Travel Date:
+						</br><input type="date" name="newFlightDateLoad" id="newFlightDateLoad" placeholder="Travel Date"/>
+						<button onclick = "loadFlightDate()">Load</button></p></br>
+						<h3>List Of Available Flights</h3>
+						<div id = "listOfBookCreated" style ="overflow-y: scroll;"></div>
+						
+						</p>
+					
+				</div>
+				<div id ="temp2" class="box-cell box2" width ="500px;" >
+						<h2>Book a flight</h2>
+						<div id = "listOfBookTimeSeries" style ="overflow-y: scroll;">
+						
+						
+						</div>
+						<button onclick = "bookFlightDate()" id="number" name="number">Book</button></p></br>
+					 
+				</div>
+			</div>
+			</div>
+		</Div>
+<!-- list of flights -->
+	<Div id = "myFlightList" class="container">
+			<div class="box">
+				<div class="box-row"> 
+				
+						<button onclick = "loadUserBookings()">View Flights</button></br>
+					<div id = "temp33" class="box-cell box1" style = "margin-left: 20%;">
+					<h2>List of Flights</h2>
+						<div id = "dispDtlsUser" style ="overflow-y: scroll;"></div>
+					</div>
+				</div>
+			</div>
+		</Div>
+	
+		
+	<!-- list of flights -->
+	<Div id = "myFlightListDetails" class="container">
+			<div class="box">
+				<div class="box-row"> 
+				
+						<button onclick = "loadMyFlightBookings()">View Flights</button></br>
+					<div id = "temp33" class="box-cell box1" style = "margin-left: 20%;">
+					<h2>List of Flights</h2>
+						<div id = "dispDtlsMy" style ="overflow-y: scroll;"></div>
+					</div>
+				</div>
+			</div>
+		</Div>
+	
+	
+	<!-- Scripting -->
+	<script type="text/javascript">
+	
+	//***********************
+	  var y = document.getElementById("bookFlightDetails");
+	    y.style.display = "none";
+	    var a = document.getElementById("registerUserDetails");
+	    a.style.display = "none";
+	    var b = document.getElementById("Adminlogindiv");
+	    b.style.display = "none";
+	    var c = document.getElementById("createNewFlightDetails");
+	    c.style.display = "none";
+	    var d = document.getElementById("myFlightListDetails");
+	    d.style.display = "none";
+	    var e = document.getElementById("myFlightList");
+	    e.style.display = "none";
+	    //*****************
+	function displayMyFlight(result){
+		var myFlights ="<table><tr><th>ID</th><th>Flight Name</th><th>Flight Number</th><th>From</th><th>To</th><th>Date</th><th>Time</th></tr><tr>";
+		
+		//dispDtlsMy
+		
+		for (var x = 0; x<result.length;x++) {
+			myFlights = myFlights +"<tr>"+"<td>" + result[x]['flightId'] +"</td>" +"<td>" + result[x]['flightName'] +"</td>" +"<td>" + result[x]['flightNumber'] +"<td>" + result[x]['from'] +"</td>" +"<td>" + result[x]['to'] +"</td>"+"<td>" + result[x]['date'] +"</td>" +"<td>" + result[x]['time'] +"</td>"+"</tr>";
+			}
+		myFlights = myFlights +"</table>";
+		document.getElementById("dispDtlsMy").innerHTML = myFlights;
+	}
+	//*************************************************
+	
+	 function loadFlightDateDataToGrid(testData){
+	//div id = "listOfBookCreated"></div>
+	//var testData =JSON.parse('[{ "id" : 45445, "scheduleName":"Result announcement", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"} ,{ "id" : 897745, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"},{ "id" : 8945, "scheduleName":"Result announcement 2", "scheduleLocation":"Meeting Room", "Date":"30-05-2020"}]');
+	var dispString ="</br>";
+	for (var x = 0; x<testData.length;x++) {
+		dispString = dispString+ "<p>Click Here <button onclick = 'loadTimeSeriesData(this)'>"+testData[x]['flightId'] + "</button> &nbsp &nbsp" +testData[x]['flightName']+" &nbsp &nbsp" +testData[x]['from']+" &nbsp To &nbsp" +testData[x]['to']+" </p>";
+		}
+	 document.getElementById("listOfBookCreated").innerHTML = dispString;
+} 
+
+	//*************************************************
+	
+	function displayMyFlightByDate(result){
+		var myDispDtls ="<table><tr><th>ID</th><th>Flight Name</th><th>Flight Number</th><th>From</th><th>To</th><th>Date</th><th>Time</th></tr><tr>";
+		
+		//dispDtlsMy
+		
+		for (var x = 0; x<result.length;x++) {
+			myDispDtls = myDispDtls +"<tr>"+"<td>" + result[x]['flightId'] +"</td>" +"<td>" + result[x]['flightName'] +"</td>" +"<td>" + result[x]['flightNumber'] +"<td>" + result[x]['from'] +"</td>" +"<td>" + result[x]['to'] +"</td>"+"<td>" + result[x]['date'] +"</td>" +"<td>" + result[x]['time'] +"</td>"+"</tr>";
+			}
+		myDispDtls = myDispDtls +"</table>";
+		document.getElementById("listOfBookCreated").innerHTML = myDispDtls;
+	}
+	
+	function flightDetails(result){
+		
+			var listOfBook="<p>Flight Name:" + result[0]['flightName'] +"</p>  "+"<p>Flight Number:" + result[0]['flightNumber'] +"</p>  "+"<p>From:" + result[0]['from'] +"</p>  "+"<p>To:" + result[0]['to'] +"</p>  ";
+				
+			
+			document.getElementById("listOfBookTimeSeries").innerHTML=listOfBook;
+			
+			var fId=result[0]['id'];
+			
+			document.getElementById("number").innerHTML=fId;
+			
+			
+		
+	}
+	
+    //*****************
+	function displayUserFlight(result){
+		var myFlights ="<table><tr><th>ID</th><th>Flight Name</th><th>Flight Number</th><th>From</th><th>To</th></tr><tr>";
+		
+		//dispDtlsMy
+		
+		for (var x = 0; x<result.length;x++) {
+			myFlights = myFlights +"<tr>"+"<td>" + result[x]['flightId'] +"</td>" +"<td>" + result[x]['flightName'] +"</td>" +"<td>" + result[x]['flightNumber'] +"<td>" + result[x]['from'] +"</td>" +"<td>" + result[x]['to'] +"</td>"+"</tr>";
+			}
+		myFlights = myFlights +"</table>";
+		document.getElementById("dispDtlsUser").innerHTML = myFlights;
+	}
+	
+	
+	function login2(){
+		var urllog = "http://localhost:8080/com.AMS/rest/login";
+		var usr = document.getElementById("username").value;
+		var pass = document.getElementById("userpass").value;
+		var fd = new FormData(); 
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{param1: usr, param2: pass},
+		    success: function(result){
+		    	// loginSucessDiv(result);
+			    	 var x1 = document.getElementById("logindivFinal");
+					  var z1 = document.getElementById("bookFlightDetails");
+					  var z11 = document.getElementById("myFlightList");
+					  
+					    x1.style.display = "none";
+					    z1.style.display = "block";	
+					    z11.style.display = "block";	
+		    	 if(result[0].status=='Sucess'){
+		    		 loginSucessDiv1(result);
+		    		 
+		    	 }
+		    		 
+		    	 else
+			    		alert(result[0].data);
+		    }
+		 
+		})
+	}
+	
+	function login(){
+		var urllog = "http://localhost:8080/com.AMS/rest/adminLogin";
+		var usr = document.getElementById("adminname").value;
+		var pass = document.getElementById("adminpass").value;
+		var fd = new FormData(); 
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{param1: usr, param2: pass},
+		    success: function(result){
+		    	//loginSucessDiv(result);
+		    	 if(result[0].status=='sucess'){
+		    		alert(result[0].data);
+		    		loginSucess(result);
+		    		
+		    	}else{
+		    		alert(result[0].data);
+		    		alert("no");
+		    	} 
+		    	
+		    }
+		})
+	}
+	
+	function registerUserDtls(){
+		
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/registerUser";
+		var newUserNameLogin = document.getElementById("newUserNameLogin").value;
+		var newUserEmail = document.getElementById("newUserEmail").value;
+		var newUserAddress = document.getElementById("newUserAddress").value;
+		var newUserPassword = document.getElementById("newUserPassword").value;
+		
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{userName: newUserNameLogin, email: newUserEmail,address: newUserAddress,  password: newUserPassword},
+		    success: function(result){
+		    	alert(result);
+		    	clearRegisterUserDtls();
+		    }
+		})
+		
+		
+	}
+	
+	function createNewFlightDetailsOnSystem(){
+		
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/createFlight";
+		
+		var newFlightNameTmp = document.getElementById("newFlightName").value;
+		var newFlightNumberTmp = document.getElementById("newFlightNumber").value;
+		var newFromLocationTmp = document.getElementById("newFromLocation").value;
+		var newToLocationTmp = document.getElementById("newToLocation").value;
+		var newScheduleDateTmp = document.getElementById("newScheduleDate").value;
+		var scheduleTimeTmp = document.getElementById("flightTime").value;
+			
+			if(newFlightNameTmp!=null && newFlightNumberTmp!=null && newFromLocationTmp!=null && newToLocationTmp!=null && newScheduleDateTmp!=null && scheduleTimeTmp!=null)
+		{
+				$.ajax({
+		
+		    type: 'POST',
+		    url: urllog,
+		    data :{flightName: newFlightNameTmp, flightNumber: newFlightNumberTmp, fromLocation :newFromLocationTmp, toLocation : newToLocationTmp ,date: newScheduleDateTmp, time: scheduleTimeTmp},
+		    success: function(result){
+		    	alert(result);
+		    	clearcreateNewFlightDetailsOnSystem();
+		    	
+		    }
+		})
+		}
+			else
+				{
+				alert("Insert Every Details");
+				}
+			
+	}
+	
+	
+	function loadMyFlightBookings(){
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/loadFlight";
+			
+			//var newScheduleDateLoad = document.getElementById("newScheduleDateLoad").value;
+			
+			$.ajax({
+			    type: 'POST',
+			    url: urllog,
+			   // data :{userID: dbUserName},
+			//   data :{creationDate: newScheduleDateLoad},
+			    success: function(result){
+			    	if(result.length>0){
+			    		displayMyFlight(result);
+			    	}else{
+			    		alert("Record Not found in selected Date");
+			    		displayMyFlight(result);
+			    	}
+			    }
+			    	
+			})
+	}
+	
+	function loadUserBookings(){
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/loadFlightUser";
+			
+			//var newScheduleDateLoad = document.getElementById("newScheduleDateLoad").value;
+			
+			$.ajax({
+			    type: 'POST',
+			    url: urllog,
+			   // data :{userID: dbUserName},
+			//   data :{creationDate: newScheduleDateLoad},
+			    success: function(result){
+			    	if(result.length>0){
+			    		displayUserFlight(result);
+			    	}else{
+			    		alert("Record Not found in selected Date");
+			    		displayUserFlight(result);
+			    	}
+			    }
+			    	
+			})
+	}
+	function loadFlightDate()
+	{
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/loadFlightByDate";
+		
+		var newScheduleDateLoad = document.getElementById("newFlightDateLoad").value;
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		   // data :{userID: dbUserName},
+			 data :{creationDate: newScheduleDateLoad},
+		    success: function(result){
+		    	if(result.length>0){
+		    		//displayMyFlightByDate(result);
+		    		loadFlightDateDataToGrid(result);
+		    	}else{
+		    		alert("Record Not found in selected Date");
+		    		displayMyFlightByDate(result);
+		    	}
+		    }
+		    	
+		})
+	}
+var rs;
+	
+	var flightN ;
+	var flightNo ;
+	var fromL ;
+	var toL ;
+	var user;
+	function loadTimeSeriesData(seriesId){
+		var str = seriesId.innerText;
+		
+		var urllog = "http://localhost:8080/com.AMS/rest/loadTimeSeriesById";
+			
+			$.ajax({
+			    type: 'POST',
+			    url: urllog,
+			    data :{id: str},
+			    success: function(result){
+			    	flightDetails(result);
+			    	rs=result[0]['id'];
+					 flightN =  result[0]['flightName'];
+					 flightNo =  result[0]['flightNumber'];
+					 fromL =  result[0]['from'];
+					 toL =  result[0]['to'];
+					 user="anshu";
+			    }
+			    	
+			})
+	}
+	
+	//bookFlightDate
+	
+	function bookFlightDate(){
+		
+		var n= document.getElementById("number").textContent;
+		var urllog1 = "http://localhost:8080/com.AMS/rest/bookFlightDetails";
+		if(flightN!=null &&flightNo!=null && fromL!=null && toL!=null ){
+		$.ajax({
+		    type: 'POST',
+		    url: urllog1,
+		    data :{id:rs, name: flightN, number:flightNo, from:fromL, to:toL, username:user},
+		    success: function(result){
+		    	//flightDetails(result);
+		    	if(result==true)
+		    	alert("Flight Booked");
+		    	else
+		    		alert("Unable to book");
+		    }
+		    	
+		})
+		
+		}
+		else{
+			alert("Unable to book");
+		}
+		
+		
+	}
+	
+	function clearcreateNewFlightDetailsOnSystem(){
+		
+		document.getElementById("newFlightName").value ="";
+		document.getElementById("newFlightNumber").value ="";
+		document.getElementById("newFromLocation").value ="";
+		document.getElementById("newScheduleDate").value="00";
+		document.getElementById("flightTime").value="00";
+	}
+	function clearRegisterUserDtls(){
+		document.getElementById("newUserNameLogin").value = "";
+		document.getElementById("newUserEmail").value = "";
+		document.getElementById("newUserAddress").value = "";
+		document.getElementById("newUserPassword").value = "";
+		document.getElementById("newUserPassword2").value = "";
+	}
+	function loginSucessDiv1(result) {
+		  var x1 = document.getElementById("logindivFinal");
+		  var z1 = document.getElementById("bookFlightDetails");
+		    x1.style.display = "none";
+		    z1.style.display = "block";		    
+		}
+	function loginSucess(result) {
+		  var x = document.getElementById("Adminlogindiv");
+		  var y = document.getElementById("createNewFlightDetails");
+		  var z = document.getElementById("myFlightListDetails");
+		    x.style.display = "none";
+		    y.style.display = "block";
+		    z.style.display = "block";
+		}
+	function register(){
+		
+		  var p = document.getElementById("logindiv");
+		  var q = document.getElementById("registerUserDetails");
+		  p.style.display="none";
+		  q.style.display="block";
+		  
+}
+	function admin(){
+		
+		  var p1 = document.getElementById("logindiv");
+		  var q1 = document.getElementById("Adminlogindiv");
+		  p1.style.display="none";
+		  q1.style.display="block";
+		  
+}
+	function newLogin(){
+		
+		  var p = document.getElementById("registerUserDetails");
+		  var q = document.getElementById("logindiv");
+		  p.style.display="none";
+		  q.style.display="block";
+		  
+}
+	
+	</script>
+</body>
+</html>
